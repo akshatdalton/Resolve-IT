@@ -1,0 +1,2 @@
+# Helper library to use https://api.stackexchange.com.
+stackapi
