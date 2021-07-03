@@ -18,3 +18,11 @@ https://github.com/zulip/zulint/archive/9908540b7734b51f86ccabab706befc2ff33212a
 
 # Static type checker for Python
 mypy
+
+# https://api.stackexchange.com doesn't return the complete excerpt of the answers.
+# Therefore, we need to make request to the stackoverflow api with the link obtained
+# with the help of stackapi to fetch the full content.
+requests
+
+# This will be used to parse the output obtained from above request.
+beautifulsoup4
