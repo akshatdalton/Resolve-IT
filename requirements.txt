@@ -24,5 +24,8 @@ mypy
 # with the help of stackapi to fetch the full content.
 requests
 
+# mypy stubs for requests module.
+types-requests
+
 # This will be used to parse the output obtained from above request.
 beautifulsoup4
