@@ -29,3 +29,6 @@ types-requests
 
 # This will be used to parse the output obtained from above request.
 beautifulsoup4
+
+# This parser will be used by BeautifulSoup.
+lxml
