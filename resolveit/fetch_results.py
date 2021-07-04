@@ -1,8 +1,8 @@
 from typing import List
 
+from settings import SEARCH_ENDPOINT
 from stackapi import StackAPI
 
-SEARCH_ENDPOINT = "search/advanced"
 
 def parse_and_get_results(error_msg: str) -> List[str]:
     SITE = StackAPI("stackoverflow")
