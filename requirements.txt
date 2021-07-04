@@ -32,3 +32,6 @@ beautifulsoup4
 
 # This parser will be used by BeautifulSoup.
 lxml
+
+# mypy stubs for dataclass
+types-dataclasses
