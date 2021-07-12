@@ -1,3 +1,4 @@
+import html
 from typing import List
 
 from bs4 import BeautifulSoup
@@ -41,10 +42,14 @@ class Parser(object):
         return answers_list
 
     def get_question_header(self) -> str:
-        return self.soup.find("div", id=self.QUESTION_HEADER).h1.text.strip()
+        return html.unescape(
+            self.soup.find("div", id=self.QUESTION_HEADER).h1.text.strip()
+        )
 
     def get_description(self, soup_tree: Tag) -> str:
-        return soup_tree.find("div", class_=self.DESCRIPTION).text.strip()
+        return html.unescape(
+            soup_tree.find("div", class_=self.DESCRIPTION).text.strip()
+        )
 
     def get_tags(self, soup_tree: Tag) -> List[str]:
         tag_list: List[str] = []
