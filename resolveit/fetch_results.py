@@ -1,18 +1,23 @@
-from typing import List, Optional
+import html
+from typing import Any, Dict, List, Optional
 
 import requests
+from rparser import Parser
 from settings import HEADERS, SEARCH_ENDPOINT
 from stackapi import StackAPI
 
 
-def parse_and_get_results(error_msg: str) -> List[str]:
+def parse_and_get_results(error_msg: str) -> List[Dict[str, str]]:
     SITE = StackAPI("stackoverflow")
     SITE.max_pages = 1
+    SITE.page_size = 50
     results = SITE.fetch(SEARCH_ENDPOINT, sort="votes", order="desc", q=error_msg)
-    result_links: List[str] = []
-    for item in results["items"]:
-        if item["is_answered"]:
-            result_links.append(item["link"])
+    result_links: List[Dict[str, str]] = []
+    for result in results["items"]:
+        if result["is_answered"]:
+            result_links.append(
+                {"title": html.unescape(result["title"]), "link": result["link"]}
+            )
 
     return result_links
 
@@ -33,3 +38,12 @@ def get_link_content(link: str) -> Optional[str]:
         return None
 
     return response.text
+
+
+def get_question_and_answers(link: str) -> Dict[str, Any]:
+    content = get_link_content(link)
+    parsed_data = Parser(content)
+    result: Dict[str, Any] = {}
+    result["question"] = parsed_data.get_question_data()
+    result["answers"] = parsed_data.get_answers_data()
+    return result
