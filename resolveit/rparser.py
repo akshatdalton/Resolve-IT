@@ -32,7 +32,7 @@ class Parser(object):
     def get_answers_data(self) -> List[Answer]:
         answers_tree = self.soup.find("div", id=self.ANSWERS)
         answers_list: List[Answer] = []
-        for answer_tree in answers_tree.find_all("div", class_=self.ANSWER)[:1]:
+        for answer_tree in answers_tree.find_all("div", class_=self.ANSWER):
             answer: Answer = Answer(
                 description=self.get_description(answer_tree),
                 votes=self.get_votes(answer_tree),
