@@ -35,3 +35,6 @@ lxml
 
 # mypy stubs for dataclass
 types-dataclasses
+
+# Console user interface library for Python.
+urwid
