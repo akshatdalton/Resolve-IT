@@ -1,8 +1,9 @@
 import subprocess
 import sys
 from subprocess import PIPE
-from typing import List
+from typing import Dict, List
 
+from cli_output import Interface
 from fetch_results import parse_and_get_results
 
 
@@ -17,12 +18,8 @@ def get_actual_error(stderr: str) -> str:
     return stderr.split("\n")[-2].strip()
 
 
-def show_so_links(file: List[str], links: List[str]) -> None:
-    file_name_with_path = " ".join(file)
-    print(f"Execution of your {file_name_with_path} failed. 💔\n")
-    print("Checkout some of the Stackoverflow links:")
-    for ind, link in enumerate(links):
-        print(f"{ind + 1}. {link}")
+def launch_interface(result_links: List[Dict[str, str]]) -> None:
+    Interface(result_links)
 
 
 def main() -> None:
@@ -43,7 +40,7 @@ def main() -> None:
 
     actual_error = get_actual_error(process.stderr)
     result_links = parse_and_get_results(actual_error)
-    show_so_links(file, result_links)
+    launch_interface(result_links)
 
 
 if __name__ == "__main__":
