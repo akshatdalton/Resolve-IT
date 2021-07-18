@@ -65,7 +65,7 @@ def main() -> None:
         result_links = parse_and_get_results(args.query)
         launch_interface(result_links)
     else:
-        print("Please choose a valid argument.")
+        parser.print_help()
 
 
 if __name__ == "__main__":
