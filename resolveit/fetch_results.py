@@ -2,9 +2,10 @@ import html
 from typing import Any, Dict, List, Optional
 
 import requests
-from rparser import Parser
-from settings import HEADERS, SEARCH_ENDPOINT
 from stackapi import StackAPI
+
+from resolveit.rparser import Parser
+from resolveit.settings import HEADERS, SEARCH_ENDPOINT
 
 
 def parse_and_get_results(error_msg: str) -> List[Dict[str, str]]:
@@ -41,7 +42,7 @@ def get_link_content(link: str) -> Optional[str]:
 
 
 def get_question_and_answers(link: str) -> Dict[str, Any]:
-    content = get_link_content(link)
+    content = get_link_content(link) or ""
     parsed_data = Parser(content)
     result: Dict[str, Any] = {}
     result["question"] = parsed_data.get_question_data()
