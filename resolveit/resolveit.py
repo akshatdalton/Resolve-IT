@@ -4,8 +4,8 @@ from argparse import ArgumentParser
 from subprocess import PIPE
 from typing import Dict, List
 
-from cli_output import Interface
-from fetch_results import parse_and_get_results
+from resolveit.cli_output import Interface
+from resolveit.fetch_results import parse_and_get_results
 
 
 def display_success_message(file: str) -> None:
