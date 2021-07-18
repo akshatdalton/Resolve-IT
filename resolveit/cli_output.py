@@ -1,7 +1,5 @@
 from typing import Dict, List, Union
 
-from fetch_results import get_question_and_answers
-from resolveit_types import Answer, Question
 from urwid import (
     AttrMap,
     Button,
@@ -18,6 +16,9 @@ from urwid import (
     WidgetPlaceholder,
     connect_signal,
 )
+
+from resolveit.fetch_results import get_question_and_answers
+from resolveit.resolveit_types import Answer, Question
 
 
 class CascadingBoxes(WidgetPlaceholder):
@@ -83,8 +84,11 @@ class Interface(object):
         question_body.append(Divider("-"))
         question_body.append(Text([question.description, "\n"]))
         question_body.append(Divider("*"))
-        tags = "Tags: " + " ".join(question.tags)
-        question_body.append(Text(f"{tags} Votes: {question.votes}"))
+        if question.tags is not None:
+            tags = "Tags: " + " ".join(question.tags)
+            question_body.append(Text(f"{tags} Votes: {question.votes}"))
+        else:
+            question_body.append(Text(f"Votes: {question.votes}"))
         question_body.append(Divider("*"))
         question_body.append(Divider("="))
         return question_body
