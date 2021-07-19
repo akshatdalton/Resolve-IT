@@ -92,7 +92,3 @@ def main() -> None:
         launch_interface(args.query)
     else:
         parser.print_help()
-
-
-if __name__ == "__main__":
-    main()
