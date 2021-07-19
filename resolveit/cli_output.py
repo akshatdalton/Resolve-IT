@@ -23,6 +23,7 @@ from resolveit.resolveit_types import Answer, Question
 
 class CascadingBoxes(WidgetPlaceholder):
     def open_box(self, box: Union[ListBox, Padding]) -> None:
+        self.original_widget: Frame
         self.original_widget = Overlay(
             top_w=LineBox(box),
             bottom_w=self.original_widget,
