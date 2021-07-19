@@ -1,5 +1,6 @@
 import subprocess
 import sys
+import traceback
 from argparse import ArgumentParser
 from subprocess import PIPE
 from types import TracebackType
@@ -32,10 +33,10 @@ class ResolveIT(object):
         if self.func is not None:
             try:
                 return self.func(*args, **kwargs)
-            except Exception as e:
-                error_type = type(e).__name__
-                error_msg = f"{error_type}: {str(e)}"
-                launch_interface(error_msg)
+            except Exception:
+                stack_trace = traceback.format_exc()
+                actual_error = get_actual_error(stack_trace)
+                launch_interface(actual_error)
         return None
 
     def __enter__(self) -> None:
