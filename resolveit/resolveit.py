@@ -3,7 +3,7 @@ import sys
 from argparse import ArgumentParser
 from subprocess import PIPE
 from types import TracebackType
-from typing import Any, Dict, List, Type
+from typing import Any, Callable, Dict, List, Optional, Type
 
 from resolveit.cli_output import Interface
 from resolveit.fetch_results import parse_and_get_results
@@ -24,8 +24,18 @@ def launch_interface(result_links: List[Dict[str, str]]) -> None:
 
 
 class ResolveIT(object):
-    def __init__(self) -> None:
-        pass
+    def __init__(self, func: Optional[Callable[..., Any]] = None) -> None:
+        self.func = func
+
+    def __call__(self, *args: Any, **kwargs: Any) -> Optional[Callable[..., Any]]:
+        if self.func is not None:
+            try:
+                return self.func(*args, **kwargs)
+            except Exception as error_msg:
+                if isinstance(error_msg, str):
+                    result_links = parse_and_get_results(error_msg)
+                    launch_interface(result_links)
+        return None
 
     def __enter__(self) -> None:
         pass
