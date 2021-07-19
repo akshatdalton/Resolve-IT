@@ -3,7 +3,7 @@ import sys
 from argparse import ArgumentParser
 from subprocess import PIPE
 from types import TracebackType
-from typing import Any, Callable, Dict, List, Optional, Type
+from typing import Any, Callable, Optional, Type
 
 from resolveit.cli_output import Interface
 from resolveit.fetch_results import parse_and_get_results
@@ -19,7 +19,8 @@ def get_actual_error(stderr: str) -> str:
     return stderr.split("\n")[-2].strip()
 
 
-def launch_interface(result_links: List[Dict[str, str]]) -> None:
+def launch_interface(error_msg: str) -> None:
+    result_links = parse_and_get_results(error_msg)
     Interface(result_links)
 
 
@@ -33,8 +34,7 @@ class ResolveIT(object):
                 return self.func(*args, **kwargs)
             except Exception as error_msg:
                 if isinstance(error_msg, str):
-                    result_links = parse_and_get_results(error_msg)
-                    launch_interface(result_links)
+                    launch_interface(error_msg)
         return None
 
     def __enter__(self) -> None:
@@ -45,8 +45,7 @@ class ResolveIT(object):
     ) -> bool:
         if exc_traceback is not None:
             error_msg = f"{exc_type.__name__}: {exc_value}"
-            result_links = parse_and_get_results(error_msg)
-            launch_interface(result_links)
+            launch_interface(error_msg)
             return True
         return False
 
@@ -88,11 +87,9 @@ def main() -> None:
             sys.exit()
 
         actual_error = get_actual_error(process.stderr)
-        result_links = parse_and_get_results(actual_error)
-        launch_interface(result_links)
+        launch_interface(actual_error)
     elif args.query is not None:
-        result_links = parse_and_get_results(args.query)
-        launch_interface(result_links)
+        launch_interface(args.query)
     else:
         parser.print_help()
 
