@@ -2,7 +2,8 @@ import subprocess
 import sys
 from argparse import ArgumentParser
 from subprocess import PIPE
-from typing import Any, Dict, List
+from types import TracebackType
+from typing import Any, Dict, List, Type
 
 from resolveit.cli_output import Interface
 from resolveit.fetch_results import parse_and_get_results
@@ -29,7 +30,9 @@ class ResolveIT(object):
     def __enter__(self) -> None:
         pass
 
-    def __exit__(self, exc_type: Any, exc_value: str, exc_traceback: Any) -> bool:
+    def __exit__(
+        self, exc_type: Type[Any], exc_value: str, exc_traceback: TracebackType
+    ) -> bool:
         if exc_traceback is not None:
             error_msg = f"{exc_type.__name__}: {exc_value}"
             result_links = parse_and_get_results(error_msg)
