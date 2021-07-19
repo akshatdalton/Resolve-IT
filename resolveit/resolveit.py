@@ -75,9 +75,8 @@ def main() -> None:
     if args.file is not None:
         language = "python3"
         terminal_command = [language, args.file]
-        # We keep `check=False` so that we can show the stackoverflow link to the users.
-        # And we must not show the traceback calls to this process when the execution of
-        # file fails.
+        # We keep `check=False` so that  we do not show the traceback
+        # calls to this process when the execution of file fails.
         process = subprocess.run(
             terminal_command, stdout=PIPE, stderr=PIPE, encoding="UTF-8"
         )
