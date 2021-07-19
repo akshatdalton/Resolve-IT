@@ -58,6 +58,8 @@ class Interface(object):
         self.main_loop = MainLoop(
             self.top, palette=self.palette, unhandled_input=self.handle_input
         )
+
+    def display_interface(self) -> None:
         self.main_loop.run()
 
     def create_menu(self) -> ListBox:
