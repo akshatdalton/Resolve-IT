@@ -32,9 +32,10 @@ class ResolveIT(object):
         if self.func is not None:
             try:
                 return self.func(*args, **kwargs)
-            except Exception as error_msg:
-                if isinstance(error_msg, str):
-                    launch_interface(error_msg)
+            except Exception as e:
+                error_type = type(e).__name__
+                error_msg = f"{error_type}: {str(e)}"
+                launch_interface(error_msg)
         return None
 
     def __enter__(self) -> None:
