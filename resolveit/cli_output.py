@@ -1,7 +1,5 @@
 from typing import Dict, List, Union
 
-from resolveit.fetch_results import get_question_and_answers
-from resolveit.resolveit_types import Answer, Question
 from urwid import (
     AttrMap,
     Button,
@@ -18,6 +16,9 @@ from urwid import (
     WidgetPlaceholder,
     connect_signal,
 )
+
+from resolveit.fetch_results import get_question_and_answers
+from resolveit.resolveit_types import Answer, Question
 
 
 class CascadingBoxes(WidgetPlaceholder):

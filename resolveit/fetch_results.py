@@ -2,9 +2,10 @@ import html
 from typing import Any, Dict, List, Optional
 
 import requests
+from stackapi import StackAPI
+
 from resolveit.rparser import Parser
 from resolveit.settings import HEADERS, SEARCH_ENDPOINT
-from stackapi import StackAPI
 
 
 def parse_and_get_results(error_msg: str) -> List[Dict[str, str]]:
