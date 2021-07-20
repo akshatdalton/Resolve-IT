@@ -1,3 +1,5 @@
+import os
+import sys
 from typing import Dict, List, Union
 
 from urwid import (
@@ -16,6 +18,9 @@ from urwid import (
     WidgetPlaceholder,
     connect_signal,
 )
+
+RESOLVEIT_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "../")
+sys.path.append(RESOLVEIT_PATH)
 
 from src.fetch_results import get_question_and_answers
 from src.resolveit_types import Answer, Question

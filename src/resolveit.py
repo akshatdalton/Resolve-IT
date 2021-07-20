@@ -1,3 +1,4 @@
+import os
 import subprocess
 import sys
 import traceback
@@ -5,6 +6,12 @@ from argparse import ArgumentParser
 from subprocess import PIPE
 from types import TracebackType
 from typing import Any, Callable, Optional, Type
+
+# HACK: Absolute import was not working when trying to
+# run the app as CLI tool or while running tests. But
+# works correctly when this is used as context managers.
+RESOLVEIT_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "../")
+sys.path.append(RESOLVEIT_PATH)
 
 from src.cli_output import Interface
 from src.fetch_results import parse_and_get_results

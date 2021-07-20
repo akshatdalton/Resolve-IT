@@ -1,8 +1,13 @@
 import html
+import os
+import sys
 from typing import Any, Dict, List, Optional
 
 import requests
 from stackapi import StackAPI
+
+RESOLVEIT_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "../")
+sys.path.append(RESOLVEIT_PATH)
 
 from src.rparser import Parser
 from src.settings import HEADERS, SEARCH_ENDPOINT

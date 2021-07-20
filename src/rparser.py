@@ -1,8 +1,13 @@
 import html
+import os
+import sys
 from typing import List
 
 from bs4 import BeautifulSoup
 from bs4.element import Tag
+
+RESOLVEIT_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "../")
+sys.path.append(RESOLVEIT_PATH)
 
 from src.resolveit_types import Answer, Question
 
