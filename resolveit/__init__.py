@@ -1,4 +1,4 @@
-from resolveit.resolveit import ResolveIT
+from resolveit.app import ResolveIT
 
 # Expose `ResolveIT` as the context manager.
 debug = ResolveIT
