@@ -6,8 +6,8 @@ from subprocess import PIPE
 from types import TracebackType
 from typing import Any, Callable, Optional, Type
 
-from resolveit.cli_output import Interface
-from resolveit.fetch_results import parse_and_get_results
+from src.cli_output import Interface
+from src.fetch_results import parse_and_get_results
 
 
 def display_success_message(file: str) -> None:
