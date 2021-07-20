@@ -13,8 +13,8 @@ from typing import Any, Callable, Optional, Type
 RESOLVEIT_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "../")
 sys.path.append(RESOLVEIT_PATH)
 
-from src.cli_output import Interface
-from src.fetch_results import parse_and_get_results
+from resolveit.cli_output import Interface
+from resolveit.fetch_results import parse_and_get_results
 
 
 def display_success_message(file: str) -> None:

@@ -2,8 +2,8 @@ import html
 from typing import Any, Dict, List, Optional
 
 import requests
-from src.rparser import Parser
-from src.settings import HEADERS, SEARCH_ENDPOINT
+from resolveit.rparser import Parser
+from resolveit.settings import HEADERS, SEARCH_ENDPOINT
 from stackapi import StackAPI
 
 
