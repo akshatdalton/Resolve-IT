@@ -11,3 +11,8 @@ RESOLVE_IT_USER_AGENT = (
 )
 
 HEADERS = {"User-Agent": RESOLVE_IT_USER_AGENT}
+
+# Following are used only for testing purposes.
+STACKEXCHANGE_API = "https://api.stackexchange.com"
+
+STACKEXCHANGE_VERSION = 2.2
