@@ -21,3 +21,9 @@ types-requests
 
 # mypy stubs for dataclass
 types-dataclasses
+
+# orjson is fast and supports dataclasses, datetimes and numpy.
+orjson
+
+# mypy stubs for orjson.
+types-orjson

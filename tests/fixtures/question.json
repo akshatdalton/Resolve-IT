@@ -1,0 +1,12 @@
+{
+  "question": {
+    "title": "What is the difference between json.dump() and json.dumps() in python?",
+    "description": "I searched in this official document to find difference between the json.dump() and json.dumps() in python. It is clear that they are related with file write option. But what is the detailed difference between them and in what situations one has more advantage than other?",
+    "tags": [
+      "python",
+      "json",
+      "python-2.7"
+    ],
+    "votes": "166"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "answers": [
+    {
+      "description": "There isn't much else to add other than what the docs say. If you want to dump the JSON into a file/socket or whatever, then you should go with dump(). If you only need it as a string (for printing, parsing or whatever) then use dumps() (dump string)\nAs mentioned by Antti Haapala in this answer, there are some minor differences on the ensure_ascii behaviour. This is mostly due to how the underlying write() function works, being that it operates on chunks rather than the whole string. Check his answer for more details on that.\njson.dump()\n\nSerialize obj as a JSON formatted stream to fp (a .write()-supporting file-like object\nIf ensure_ascii is False, some chunks written to fp may be unicode instances\n\njson.dumps()\n\nSerialize obj to a JSON formatted str\nIf ensure_ascii is False, the result may contain non-ASCII characters and the return value may be a unicode instance",
+      "votes": "177"
+    },
+    {
+      "description": "The functions with an s take string parameters. The others take file \nstreams.",
+      "votes": "44"
+    },
+    {
+      "description": "In memory usage and speed.\nWhen you call jsonstr = json.dumps(mydata) it first creates a full copy of your data in memory and only then you file.write(jsonstr) it to disk. So this is a faster method but can be a problem if you have a big piece of data to save.\nWhen you call json.dump(mydata, file) -- without 's', new memory is not used, as the data is dumped by chunks. But the whole process is about 2 times slower.\nSource: I checked the source code of json.dump() and json.dumps() and also tested both the variants measuring the time with time.time() and watching the memory usage in htop.",
+      "votes": "30"
+    },
+    {
+      "description": "One notable difference in Python 2 is that if you're using ensure_ascii=False, dump will properly write UTF-8 encoded data into the file (unless you used 8-bit strings with extended characters that are not UTF-8):\ndumps on the other hand, with ensure_ascii=False can produce a str or unicode just depending on what types you used for strings:\n\nSerialize obj to a JSON formatted str using this conversion table. If ensure_ascii is False, the result may contain non-ASCII characters and the return value may be a unicode instance.\n\n(emphasis mine). Note that it may still be a str instance as well.\nThus you cannot use its return value to save the structure into file without checking which \nformat was returned and possibly playing with unicode.encode.\nThis of course is not valid concern in Python 3 any more, since there is no more this 8-bit/Unicode confusion.\n\nAs for load vs loads, load considers the whole file to be one JSON document, so you cannot use it to read multiple newline limited JSON documents from a single file.",
+      "votes": "6"
+    }
+  ]
+}
