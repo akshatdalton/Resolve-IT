@@ -65,7 +65,7 @@ class Interface(object):
     def create_menu(self) -> ListBox:
         body = [Text("Resolve-IT"), Divider("-")]
         for result in self.search_results:
-            button = Button(result["title"])
+            button = Button(f'{result["title"]} (Votes: {result["votes"]})')
             connect_signal(button, "click", self.handle_chosen_result, result["link"])
             body.append(AttrMap(button, None, focus_map="reversed"))
         return ListBox(SimpleFocusListWalker(body))

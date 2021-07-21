@@ -17,7 +17,11 @@ def parse_and_get_results(error_msg: str) -> List[Dict[str, str]]:
     for result in results["items"]:
         if result["is_answered"]:
             result_links.append(
-                {"title": html.unescape(result["title"]), "link": result["link"]}
+                {
+                    "title": html.unescape(result["title"]),
+                    "votes": result["score"],
+                    "link": result["link"],
+                }
             )
 
     return result_links
