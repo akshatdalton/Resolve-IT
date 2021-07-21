@@ -115,12 +115,9 @@ class TestFetchResults(TestCase):
         self.assertEqual(
             actual_result["question"], expected_parsed_data.get_question_data()
         )
-        self.assertEqual(
-            len(actual_result["answers"]), len(expected_parsed_data.get_answers_data())
-        )
-        self.assertListEqual(
-            actual_result["answers"], expected_parsed_data.get_answers_data()
-        )
+        expected_answers_data = expected_parsed_data.get_answers_data()
+        self.assertEqual(len(actual_result["answers"]), len(expected_answers_data))
+        self.assertListEqual(actual_result["answers"], expected_answers_data)
 
 
 if __name__ == "__main__":
