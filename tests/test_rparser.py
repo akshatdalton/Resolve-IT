@@ -12,7 +12,7 @@ from resolveit.resolveit_types import Answer, Question
 from resolveit.rparser import Parser
 
 
-class TestResolveIT(TestCase):
+class TestRParser(TestCase):
     parsed_data = Parser("")
 
     @classmethod
