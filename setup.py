@@ -25,7 +25,7 @@ setup(
     python_requires=">=3.5",
     url="https://github.com/akshatdalton/Resolve-IT",
     packages=find_packages(exclude=["*.tests", "*.tests.*", "tests.*", "tests"]),
-    entry_points={"console_scripts": ["resolveit = resolveit.resolveit:main"]},
+    entry_points={"console_scripts": ["resolveit = resolveit.app:main"]},
     install_requires=REQUIREMENTS,
     license="MIT License",
 )
