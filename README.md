@@ -2,6 +2,8 @@
 
 Resolve-IT is a command line tool that fetches Stack Overflow results when an exception is thrown or when a query is made. Run your python file with `resolveit` and see the results.
 
+![resolveit](docs/resolveit.gif)
+
 ---
 
 ## How to use it?
@@ -47,4 +49,3 @@ Once you have run all the commands and results are fine, we are all set to run t
         with ResolveIT():
             # Here goes the code ...
       ```
-
