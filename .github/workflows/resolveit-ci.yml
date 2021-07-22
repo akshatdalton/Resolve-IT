@@ -13,10 +13,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+
     - name: Set up Python 3.6.9
       uses: actions/setup-python@v2
       with:
-        python-version: 3.6.9
+        python-version: 3.6.9   # It is better to not change this as this may cause tests to
+                                # fail since exception errors differ on each python version.
 
     - name: Install dependencies
       run: |
@@ -26,11 +28,8 @@ jobs:
 
     - name: Setting up Resolve-IT
       run: |
-        python3 setup.py install
+        python setup.py install
 
     - name: Running tests
       run: |
-        python3 tests/test_app.py
-        python3 tests/test_fetch_results.py
-        python3 tests/test_resolveit.py
-        python3 tests/test_rparser.py        
+        python -m unittest discover tests       
