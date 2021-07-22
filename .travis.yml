@@ -1,0 +1,13 @@
+language: python
+python:
+  - "3.6"
+cache: pip
+install:
+  - pip install -r requirements/common.in
+  - pip install -r requirements/dev.in
+script:
+  - python3 setup.py install
+  - python3 tests/test_app.py
+  - python3 tests/test_fetch_results.py
+  - python3 tests/test_resolveit.py
+  - python3 tests/test_rparser.py
