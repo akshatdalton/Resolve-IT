@@ -2,6 +2,13 @@
 
 Resolve-IT is a command line tool that fetches Stack Overflow results when an exception is thrown or when a query is made. Run your python file with `resolveit` and see the results.
 
+<!-- [![coverage status](https://img.shields.io/codecov/c/github/zulip/zulip/master.svg)](https://codecov.io/gh/zulip/zulip/branch/master) -->
+[![GitHub Actions build status](https://github.com/akshatdalton/Resolve-IT/actions/workflows/resolveit-ci.yml/badge.svg?branch=main)](https://github.com/akshatdalton/Resolve-IT/actions/workflows/resolveit-ci.yml?query=branch%3main)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+[![Checked with mypy](http://www.mypy-lang.org/static/mypy_badge.svg)](http://mypy-lang.org/)
+[![Imports: isort](https://img.shields.io/badge/%20imports-isort-%231674b1?style=flat&labelColor=ef8336)](https://pycqa.github.io/isort/)
+[![License](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/akshatdalton/Resolve-IT/)
+
 ![resolveit](docs/resolveit.gif)
 
 ---
