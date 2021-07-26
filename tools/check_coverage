@@ -1,0 +1,19 @@
+#!/usr/bin/env python3
+
+import orjson
+
+COVERAGE_PATH = "coverage.json"
+coverage_json = None
+
+try:
+    with open(COVERAGE_PATH, "rb") as f:
+        coverage_json = orjson.loads(f.read())
+except OSError:
+    print(COVERAGE_PATH + " does not exist.")
+    print("Make sure you run tests with `coverage run`.")
+    print()
+    raise
+
+assert (
+    coverage_json["totals"]["percent_covered"] > 95
+), "Your tests don't include 95 percentage coverage."
