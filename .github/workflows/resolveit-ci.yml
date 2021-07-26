@@ -32,4 +32,8 @@ jobs:
 
     - name: Running tests
       run: |
-        python -m unittest discover tests       
+        coverage run -m unittest discover tests
+
+    - name: Checking code coverage
+      run: |
+        python tools/check_coverage
