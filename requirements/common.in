@@ -17,3 +17,6 @@ urwid
 
 # This is to use dataclass decorator provided by dataclasses.
 dataclasses
+
+# For code coverage.
+coverage

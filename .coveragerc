@@ -1,0 +1,10 @@
+[run]
+include =
+    resolveit/*
+
+omit =
+    # Didn't find any feasible way to write test for urwid package.
+    resolveit/cli_output.py
+
+[json]
+pretty_print = True
