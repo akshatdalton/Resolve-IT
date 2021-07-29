@@ -30,3 +30,6 @@ types-orjson
 
 # A utility library for mocking out the requests Python library.
 responses
+
+# For code coverage.
+coverage
