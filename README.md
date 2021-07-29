@@ -17,6 +17,16 @@ Resolve-IT is a command line tool that fetches Stack Overflow results when an ex
 
 That's pretty easy. Follow the following setup steps:
 
+You can install this tool in either of the following ways:
+
+```
+virtualenv venv
+source venv/bin/activate
+pip install Resolve-IT
+```
+
+or
+
 ```
 git clone https://github.com/akshatdalton/Resolve-IT.git
 virtualenv venv
