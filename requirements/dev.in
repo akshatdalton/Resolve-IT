@@ -33,3 +33,6 @@ responses
 
 # For code coverage.
 coverage
+
+# For publishing the package.
+twine
