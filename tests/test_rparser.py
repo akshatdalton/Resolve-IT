@@ -10,6 +10,7 @@ sys.path.append(RESOLVEIT_PATH)
 
 from resolveit.resolveit_types import Answer, Question
 from resolveit.rparser import Parser
+from resolveit.settings import do_suppress_animation
 
 
 class TestRParser(TestCase):
@@ -17,6 +18,7 @@ class TestRParser(TestCase):
 
     @classmethod
     def setUpClass(cls) -> None:
+        do_suppress_animation()
         with open("tests/fixtures/stackoverflow.json", "rb") as f:
             stackoverflow_data = orjson.loads(f.read())["html"]
             cls.parsed_data = Parser(stackoverflow_data)

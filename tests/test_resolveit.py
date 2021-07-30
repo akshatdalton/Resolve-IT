@@ -8,9 +8,14 @@ sys.path.append(RESOLVEIT_PATH)
 from fixtures.fixture3 import execute_resolveit_as_context_manager
 
 from resolveit import ResolveIT, app, debug
+from resolveit.settings import do_suppress_animation
 
 
 class TestResolveIT(TestCase):
+    @classmethod
+    def setUpClass(cls) -> None:
+        do_suppress_animation()
+
     def test_resolveit_as_class_context_manager(self) -> None:
         app.launch_interface = mock.MagicMock()
 

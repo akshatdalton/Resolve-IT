@@ -16,3 +16,15 @@ HEADERS = {"User-Agent": RESOLVE_IT_USER_AGENT}
 STACKEXCHANGE_API = "https://api.stackexchange.com"
 
 STACKEXCHANGE_VERSION = 2.2
+
+SUPPRESS_ANIMATION = False
+
+
+def do_suppress_animation() -> None:
+    global SUPPRESS_ANIMATION
+    SUPPRESS_ANIMATION = True
+
+
+def is_animation_suppressed() -> bool:
+    global SUPPRESS_ANIMATION
+    return SUPPRESS_ANIMATION

@@ -16,10 +16,19 @@ from resolveit.fetch_results import (
     parse_and_get_results,
 )
 from resolveit.rparser import Parser
-from resolveit.settings import SEARCH_ENDPOINT, STACKEXCHANGE_API, STACKEXCHANGE_VERSION
+from resolveit.settings import (
+    SEARCH_ENDPOINT,
+    STACKEXCHANGE_API,
+    STACKEXCHANGE_VERSION,
+    do_suppress_animation,
+)
 
 
 class TestFetchResults(TestCase):
+    @classmethod
+    def setUpClass(cls) -> None:
+        do_suppress_animation()
+
     @responses.activate
     def test_parse_and_get_results(self) -> None:
         url = f"{STACKEXCHANGE_API}/{STACKEXCHANGE_VERSION}/{SEARCH_ENDPOINT}/"

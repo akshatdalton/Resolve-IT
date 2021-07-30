@@ -11,6 +11,7 @@ RESOLVEIT_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "../")
 sys.path.append(RESOLVEIT_PATH)
 
 from resolveit import app
+from resolveit.settings import do_suppress_animation
 
 
 class TestApp(TestCase):
@@ -27,6 +28,10 @@ class TestApp(TestCase):
         TypeError,
         ValueError,
     ]
+
+    @classmethod
+    def setUpClass(cls) -> None:
+        do_suppress_animation()
 
     def test_get_actual_error(self) -> None:
         EXCEPTION_MESSAGE = "This is a regular exception message"

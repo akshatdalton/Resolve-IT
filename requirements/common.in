@@ -17,3 +17,8 @@ urwid
 
 # This is to use dataclass decorator provided by dataclasses.
 dataclasses
+
+# For CLI output.
+colorama
+pyfiglet
+clanimate

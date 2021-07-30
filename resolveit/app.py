@@ -13,7 +13,12 @@ from typing import Any, Callable, Optional, Type
 RESOLVEIT_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "../")
 sys.path.append(RESOLVEIT_PATH)
 
-from resolveit.cli_output import Interface
+from resolveit.cli_output import (
+    Interface,
+    end_loading_screen,
+    output_app_name,
+    start_loading_screen,
+)
 from resolveit.fetch_results import parse_and_get_results
 
 
@@ -30,6 +35,7 @@ def get_actual_error(stderr: str) -> str:
 def launch_interface(error_msg: str) -> None:
     result_links = parse_and_get_results(error_msg)
     interface = Interface(result_links)
+    end_loading_screen()
     interface.display_interface()
 
 
@@ -79,6 +85,8 @@ def create_parser() -> ArgumentParser:
 
 
 def main() -> None:
+    output_app_name("Resolve-IT")
+    start_loading_screen()
     parser = create_parser()
     args = parser.parse_args()
 

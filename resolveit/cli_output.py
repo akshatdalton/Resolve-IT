@@ -1,5 +1,8 @@
 from typing import Dict, List, Union
 
+from clanimate import Animator
+from colorama import Fore, Style
+from pyfiglet import Figlet
 from urwid import (
     AttrMap,
     Button,
@@ -19,6 +22,7 @@ from urwid import (
 
 from resolveit.fetch_results import get_question_and_answers
 from resolveit.resolveit_types import Answer, Question
+from resolveit.settings import is_animation_suppressed
 
 
 class CascadingBoxes(WidgetPlaceholder):
@@ -116,3 +120,37 @@ class Interface(object):
                 raise ExitMainLoop()
         elif input in ["q", "Q"]:
             raise ExitMainLoop()
+
+
+def output_app_name(name: str) -> None:
+    if is_animation_suppressed():
+        return
+
+    f = Figlet(font="slant")
+    print(Style.RESET_ALL)
+    print(Fore.GREEN + Style.BRIGHT + f.renderText(name))
+    print(Style.RESET_ALL)
+
+
+load_animation = Animator(
+    "scroll_text",
+    10,
+    name="Resolve-IT is fetching results for you ",
+    animation_frames="===============",
+)
+
+
+def start_loading_screen() -> None:
+    if is_animation_suppressed():
+        return
+
+    print(Fore.GREEN + Style.BRIGHT, end="")
+    load_animation.start_animation()
+
+
+def end_loading_screen() -> None:
+    if is_animation_suppressed():
+        return
+
+    load_animation.end_animation()
+    print(Style.RESET_ALL, end="")
