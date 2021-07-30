@@ -29,7 +29,8 @@ def get_actual_error(stderr: str) -> str:
 
 def launch_interface(error_msg: str) -> None:
     result_links = parse_and_get_results(error_msg)
-    Interface(result_links).display_interface()
+    interface = Interface(result_links)
+    interface.display_interface()
 
 
 class ResolveIT(object):
