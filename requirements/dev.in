@@ -11,7 +11,7 @@ black
 pyflakes
 
 # Zulip's linting framework - zulint
-https://github.com/zulip/zulint/archive/9908540b7734b51f86ccabab706befc2ff33212a.zip#egg=zulint==0.0.1
+https://github.com/zulip/zulint/archive/9908540b7734b51f86ccabab706befc2ff33212a.zip#egg=zulint==1.0.0
 
 # Static type checker for Python
 mypy
