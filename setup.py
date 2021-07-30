@@ -1,6 +1,6 @@
 from setuptools import find_packages, setup
 
-VERSION = "1.0.0"
+VERSION = "1.5.0"
 
 with open("requirements/common.in") as f:
     REQUIREMENTS = list(

@@ -1,6 +1,6 @@
 SEARCH_ENDPOINT = "search/advanced"
 
-VERSION = 1.0
+VERSION = "1.5.0"
 
 GITHUB_URL = "https://github.com/akshatdalton"
 
