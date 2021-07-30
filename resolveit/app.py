@@ -20,6 +20,7 @@ from resolveit.cli_output import (
     start_loading_screen,
 )
 from resolveit.fetch_results import parse_and_get_results
+from resolveit.settings import do_suppress_animation
 
 
 def display_success_message(file: str) -> None:
@@ -42,6 +43,7 @@ def launch_interface(error_msg: str) -> None:
 class ResolveIT(object):
     def __init__(self, func: Optional[Callable[..., Any]] = None) -> None:
         self.func = func
+        do_suppress_animation()
 
     def __call__(self, *args: Any, **kwargs: Any) -> Optional[Callable[..., Any]]:
         if self.func is not None:
