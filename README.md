@@ -31,13 +31,26 @@ or
 git clone https://github.com/akshatdalton/Resolve-IT.git
 virtualenv venv
 source venv/bin/activate
+cd Resolve-IT
 python3 setup.py install
+```
+
+or you can also build with Docker:
+
+```
+docker build -t resolveit .
 ```
 
 Once you have run all the commands and results are fine, we are all set to run the tool:
 
 ```
 (venv) $ resolveit -f <your_file_name>
+```
+
+or if you have built with Docker then use:
+
+```
+docker run -it resolveit -f main.py
 ```
 
 ## Other usage
